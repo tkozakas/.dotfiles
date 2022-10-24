@@ -23,6 +23,9 @@ pacmanInstall stow git wl-clipboard xclip libnewt glib2
 cd ~/.dotfiles || exit
 git submodule init && git submodule update
 
+#pipx
+pacmanInstall python-pipx
+
 # mangohud
 # flatpak steam doesnt work if mangohud config is a symlink so just copy it manually
 mkdir -pv ~/.config/MangoHud && cp ~/.dotfiles/mangohud/.config/MangoHud/MangoHud.conf ~/.config/MangoHud
