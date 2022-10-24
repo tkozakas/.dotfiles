@@ -28,7 +28,7 @@ git submodule init && git submodule update
 mkdir -pv ~/.config/MangoHud && cp ~/.dotfiles/mangohud/.config/MangoHud/MangoHud.conf ~/.config/MangoHud
 
 #gnome
-bash gnome/install_extension
+bash gnome/install_extension.sh
 
 # gtk
 stow gnome/gtk3 gnome/gtk4
