@@ -1,0 +1,22 @@
+[/]
+enable-standlone-runner-menu=false
+menu-background-color='rgba(48,48,49,0.98)'
+menu-border-color='rgb(60,60,60)'
+menu-button-appearance='Icon'
+menu-foreground-color='rgb(223,223,223)'
+menu-hotkey='Super_L'
+menu-item-active-bg-color='rgb(25,98,163)'
+menu-item-active-fg-color='rgb(255,255,255)'
+menu-item-grid-icon-size='Default'
+menu-item-hover-bg-color='rgb(21,83,158)'
+menu-item-hover-fg-color='rgb(255,255,255)'
+menu-layout='Runner'
+menu-position-alignment=50
+menu-separator-color='rgba(255,255,255,0.1)'
+multi-monitor=false
+pinned-app-list=['Firefox', '', 'firefox.desktop', 'Files', '', 'org.gnome.Nautilus.desktop', 'Terminal', '', 'org.gnome.Terminal.desktop', 'ArcMenu Settings', 'ArcMenu_ArcMenuIcon', 'gnome-extensions prefs arcmenu@arcmenu.com']
+position-in-panel='Center'
+prefs-visible-page=0
+recently-installed-apps=['scenebuilder.desktop', 'firefox.desktop', '010editor-project.desktop', '010editor-import.desktop', 'xdvi.desktop', 'electron18.desktop', 'maxima-git.desktop', 'net.sourceforge.maxima.xmaxima.desktop', 'electron21.desktop']
+runner-menu-hotkey='Super_L'
+search-entry-border-radius=(true, 25)
