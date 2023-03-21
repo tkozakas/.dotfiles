@@ -12,7 +12,7 @@ install_extension () {
 }
 
 #install_extension 
+install_extension dash-to-panel@jderose9.github.com
 install_extension arcmenu@arcmenu.com
 install_extension bluetooth-quick-connect@bjarosze.gnam.com
-install_extension dash-to-panel@jderose9.github.com
 install_extension upower-battery@codilia.com
