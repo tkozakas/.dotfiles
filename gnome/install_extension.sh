@@ -7,6 +7,7 @@ https://extensions.gnome.org/extension/1401/bluetooth-quick-connect/
 https://extensions.gnome.org/extension/5165/upower-battery/
 https://extensions.gnome.org/extension/615/appindicator-support/
 https://extensions.gnome.org/extension/5446/quick-settings-tweaker/
+https://extensions.gnome.org/extension/2645/brightness-control-using-ddcutil/
 )
 
 for i in "${array[@]}"
