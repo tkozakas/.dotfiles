@@ -44,14 +44,32 @@ gsettings set org.gnome.shell favorite-apps ['org.gnome.Nautilus.desktop', 'org.
 
 # oh my zsh
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+# fuck yeah
+pacmanInstall thefuck
+eval $(thefuck --alias)
+# You can use whatever you want as an alias:
+eval $(thefuck --alias FUCK)
+eval $(thefuck --alias suka)
+eval $(thefuck --alias pizdec)
+eval $(thefuck --alias kurwa)
+
+# need to test
+# # zsh-autosuggestions
+# git clone https://github.com/zsh-users/zsh-autosuggestions ~/.zsh/zsh-autosuggestions
+# source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
+# cat > ~/.zshrc << EOF
+# ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=60"
+# EOF
+# source ~/.zshrc
 
 # add the button layout if not added by the sila script
 gsettings set org.gnome.desktop.wm.preferences button-layout ":minimize,maximize,close"
 
-# set some useful key binds
-cat > ~/.xbindkeysrc << EOF
-"kgx"
-    Mod4 + t
-"gnome-screenshot -i"
-    Shift + Mod4 + s
-EOF
+# need to test
+# # set some useful key binds
+# cat > ~/.xbindkeysrc << EOF
+# "kgx"
+#     Mod4 + t
+# "gnome-screenshot -i"
+#     Shift + Mod4 + s
+# EOF
