@@ -44,3 +44,6 @@ gsettings set org.gnome.shell favorite-apps ['org.gnome.Nautilus.desktop', 'org.
 
 # oh my zsh
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+
+# add the button layout if not added by the sila script
+gsettings set org.gnome.desktop.wm.preferences button-layout ":minimize,maximize,close"
