@@ -6,6 +6,7 @@ https://extensions.gnome.org/extension/3628/arcmenu/
 https://extensions.gnome.org/extension/1401/bluetooth-quick-connect/
 https://extensions.gnome.org/extension/5165/upower-battery/
 https://extensions.gnome.org/extension/615/appindicator-support/
+https://extensions.gnome.org/extension/3499/application-volume-mixer/
 )
 
 for i in "${array[@]}"
