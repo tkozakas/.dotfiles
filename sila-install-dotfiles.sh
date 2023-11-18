@@ -36,7 +36,7 @@ gsettings set org.gnome.desktop.interface gtk-theme 'Adwaita-dark'
 gsettings set org.gnome.desktop.interface color-scheme 'prefer-dark'
 
 # some apps to install
-pacmanInstall github-cli zsh steam discord telegram firefox
+pacmanInstall github-cli zsh steam discord telegram firefox xbindkeys
 paruInstall jetbrains-toolbox
 
 # pin them here
@@ -47,3 +47,11 @@ sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/too
 
 # add the button layout if not added by the sila script
 gsettings set org.gnome.desktop.wm.preferences button-layout ":minimize,maximize,close"
+
+# set some useful key binds
+cat > ~/.xbindkeysrc << EOF
+"kgx"
+    Mod4 + t
+"gnome-screenshot -i"
+    Shift + Mod4 + s
+EOF
