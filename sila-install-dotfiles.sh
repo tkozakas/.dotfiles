@@ -36,7 +36,11 @@ gsettings set org.gnome.desktop.interface gtk-theme 'Adwaita-dark'
 gsettings set org.gnome.desktop.interface color-scheme 'prefer-dark'
 
 # some apps to install
-pacmanInstall github-cli zsh
+pacmanInstall github-cli zsh steam discord telegram firefox
+paruInstall jetbrains-toolbox
+
+# pin them here
+gsettings set org.gnome.shell favorite-apps ['org.gnome.Nautilus.desktop', 'org.gnome.Console.desktop', 'firefox.desktop', 'org.telegram.desktop.desktop', 'steam.desktop', 'jetbrains-toolbox.desktop']
 
 # oh my zsh
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
