@@ -23,9 +23,6 @@ pacmanInstall stow git wl-clipboard xclip libnewt glib2
 cd ~/.dotfiles || exit
 git submodule init && git submodule update
 
-#pipx
-pacmanInstall python-pipx
-
 # mangohud
 # flatpak steam doesnt work if mangohud config is a symlink so just copy it manually
 mkdir -pv ~/.config/MangoHud && cp ~/.dotfiles/mangohud/.config/MangoHud/MangoHud.conf ~/.config/MangoHud
@@ -37,3 +34,9 @@ bash gnome/install_extension.sh
 stow gnome/gtk3 gnome/gtk4
 gsettings set org.gnome.desktop.interface gtk-theme 'Adwaita-dark'
 gsettings set org.gnome.desktop.interface color-scheme 'prefer-dark'
+
+# some apps to install
+pacmanInstall github-cli zsh
+
+# oh my zsh
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
