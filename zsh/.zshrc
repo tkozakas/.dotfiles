@@ -71,8 +71,8 @@ ZSH_THEME="robbyrussell"
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
-    git
-    zsh-autosuggestions
+	git
+	zsh-autosuggestions
 )
 
 source $ZSH/oh-my-zsh.sh
@@ -113,3 +113,18 @@ eval $(thefuck --alias kurwa)
 
 # zsh autosuggest color style config
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=60"
+
+# funny prompts
+# Define an array of emojis
+emojis=("🐧" "😮" "👽" "🤖" "👾")
+
+# Seed random generator
+RANDOM=$(date +%s)
+
+# Select a random emoji using the correct Zsh array syntax
+random_emoji_index=$(( $RANDOM % ${#emojis[@]} + 1 ))
+random_emoji=${emojis[$random_emoji_index]}
+
+# Set the prompt with the random emoji
+PROMPT="%F{yellow}$random_emoji%f %F{blue}%~%f # "
+
