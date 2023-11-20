@@ -64,3 +64,6 @@ cp zsh/.zshrc ~/
 cp zsh/robbyrussell.zsh-theme ~/.oh-my-zsh/themes
 source ~/.oh-my-zsh/themes/robbyrussell.zsh-theme
 source ~/.zshrc
+
+# nano syntax highlighting
+curl https://raw.githubusercontent.com/scopatz/nanorc/master/install.sh | sh
