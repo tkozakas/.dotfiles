@@ -61,5 +61,6 @@ pacmanInstall thefuck
 # autosuggest
 git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
 cp zsh/.zshrc ~/
-
+cp zsh/robbyrussell.zsh-theme ~/.oh-my-zsh/themes
+source ~/.oh-my-zsh/themes/robbyrussell.zsh-theme
 source ~/.zshrc
