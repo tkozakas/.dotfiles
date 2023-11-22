@@ -22,3 +22,6 @@ do
     gnome-extensions enable ${EXTENSION_ID}
     rm ${EXTENSION_ID}.zip
 done
+
+# copy all the settings
+cp extensions /.local/share/gnome-shell/

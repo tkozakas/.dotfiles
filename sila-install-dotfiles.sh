@@ -28,7 +28,7 @@ git submodule init && git submodule update
 mkdir -pv ~/.config/MangoHud && cp ~/.dotfiles/mangohud/.config/MangoHud/MangoHud.conf ~/.config/MangoHud
 
 #gnome
-bash gnome/install_extension.sh
+bash install_extension.sh
 
 # gtk
 stow gnome/gtk3 gnome/gtk4
@@ -39,8 +39,6 @@ gsettings set org.gnome.desktop.interface color-scheme 'prefer-dark'
 pacmanInstall github-cli zsh steam discord telegram firefox xbindkeys
 paruInstall jetbrains-toolbox
 
-# pin them here
-gsettings set org.gnome.shell favorite-apps ['org.gnome.Nautilus.desktop', 'org.gnome.Console.desktop', 'firefox.desktop', 'org.telegram.desktop.desktop', 'steam.desktop', 'jetbrains-toolbox.desktop']
 # need to test
 # # set some useful key binds
 # cat > ~/.xbindkeysrc << EOF
