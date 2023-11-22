@@ -52,9 +52,10 @@ gsettings set org.gnome.desktop.interface color-scheme 'prefer-dark'
 gsettings set org.gnome.desktop.wm.preferences button-layout ":minimize,maximize,close"
 
 # oh my zsh
+pacmanInstall zsh
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 # fuck yeah
-pacmanInstall zsh oh-my-zsh thefuck
+pacmanInstall thefuck
 
 # autosuggest
 git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
