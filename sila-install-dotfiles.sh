@@ -54,7 +54,7 @@ gsettings set org.gnome.desktop.wm.preferences button-layout ":minimize,maximize
 # oh my zsh
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 # fuck yeah
-pacmanInstall thefuck
+pacmanInstall zsh oh-my-zsh thefuck
 
 # autosuggest
 git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
