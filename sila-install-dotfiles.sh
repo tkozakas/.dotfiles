@@ -27,6 +27,10 @@ git submodule init && git submodule update
 # flatpak steam doesnt work if mangohud config is a symlink so just copy it manually
 mkdir -pv ~/.config/MangoHud && cp ~/.dotfiles/mangohud/.config/MangoHud/MangoHud.conf ~/.config/MangoHud
 
+# some apps to install
+pacmanInstall github-cli zsh steam discord telegram firefox spotify
+paruInstall jetbrains-toolbox
+
 #gnome
 bash install_extension.sh
 
@@ -34,10 +38,6 @@ bash install_extension.sh
 stow gnome/gtk3 gnome/gtk4
 gsettings set org.gnome.desktop.interface gtk-theme 'Adwaita-dark'
 gsettings set org.gnome.desktop.interface color-scheme 'prefer-dark'
-
-# some apps to install
-pacmanInstall github-cli zsh steam discord telegram firefox xbindkeys
-paruInstall jetbrains-toolbox
 
 # need to test
 # # set some useful key binds
