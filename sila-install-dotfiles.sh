@@ -27,17 +27,18 @@ git submodule init && git submodule update
 # flatpak steam doesnt work if mangohud config is a symlink so just copy it manually
 mkdir -pv ~/.config/MangoHud && cp ~/.dotfiles/mangohud/.config/MangoHud/MangoHud.conf ~/.config/MangoHud
 
+# gtk
+stow gnome/gtk3 gnome/gtk4
+gsettings set org.gnome.desktop.interface gtk-theme 'Adwaita-dark'
+gsettings set org.gnome.desktop.interface color-scheme 'prefer-dark'
+gsettings set org.gnome.desktop.wm.preferences button-layout ":minimize,maximize,close"
+
 # some apps to install
 pacmanInstall github-cli zsh steam discord telegram firefox spotify
 paruInstall jetbrains-toolbox
 
 #gnome
 bash install_extension.sh
-
-# gtk
-stow gnome/gtk3 gnome/gtk4
-gsettings set org.gnome.desktop.interface gtk-theme 'Adwaita-dark'
-gsettings set org.gnome.desktop.interface color-scheme 'prefer-dark'
 
 # need to test
 # # set some useful key binds
@@ -48,11 +49,7 @@ gsettings set org.gnome.desktop.interface color-scheme 'prefer-dark'
 #     Shift + Mod4 + s
 # EOF
 
-# add the button layout if not added by the sila script
-gsettings set org.gnome.desktop.wm.preferences button-layout ":minimize,maximize,close"
-
 # oh my zsh
-pacmanInstall zsh
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 # fuck yeah
 pacmanInstall thefuck
