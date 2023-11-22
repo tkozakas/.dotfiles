@@ -24,4 +24,4 @@ do
 done
 
 # copy all the settings
-cp extensions /.local/share/gnome-shell/
+cp extensions ~/.local/share/gnome-shell/
