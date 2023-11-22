@@ -34,7 +34,7 @@ gsettings set org.gnome.desktop.interface color-scheme 'prefer-dark'
 gsettings set org.gnome.desktop.wm.preferences button-layout ":minimize,maximize,close"
 
 # some apps to install
-pacmanInstall github-cli zsh steam discord telegram firefox spotify
+pacmanInstall github-cli zsh steam discord telegram firefox spotify ddcutil
 paruInstall jetbrains-toolbox
 
 #gnome
