@@ -2,6 +2,9 @@
 
 set -euo pipefail
 
+# Activate zsh
+zsh
+
 # Sdkman
 echo "Installing Sdkman..."
 if ! command -v sdk &> /dev/null; then
