@@ -124,10 +124,6 @@ main() {
         fi
     fi
 
-    if ! bash "${_SCRIPT_DIR}/tools.sh"; then
-        overall_system_package_success=false
-    fi
-
     if [[ "$overall_system_package_success" = true ]]; then
         return 0
     else
