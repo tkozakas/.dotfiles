@@ -3,6 +3,7 @@
 set -euo pipefail
 
 _SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+# shellcheck disable=SC1091
 . "${_SCRIPT_DIR}/common.sh"
 
 SYMLINK_CONFIG_FILE="${DOTFILES_DIR}/config/symlinks.conf"
@@ -12,7 +13,7 @@ if [[ ! -f "$SYMLINK_CONFIG_FILE" ]]; then
     exit 1
 fi
 
-while IFS=':' read -r source_suffix target_suffix || [[ -n "$line" ]]; do
+while IFS=':' read -r source_suffix target_suffix; do
     if [[ -z "$source_suffix" || -z "$target_suffix" ]]; then
         continue
     fi
@@ -28,7 +29,10 @@ while IFS=':' read -r source_suffix target_suffix || [[ -n "$line" ]]; do
         continue
     fi
 
-    rm -rf "$target_path"
+    if [[ -e "$target_path" ]] || [[ -L "$target_path" ]]; then
+        rm -rf "$target_path"
+    fi
+
     mkdir -p "$(dirname "$target_path")"
     ln -s "$source_path" "$target_path"
 
