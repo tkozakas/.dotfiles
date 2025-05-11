@@ -3,7 +3,6 @@
 set -euo pipefail
 
 _MAIN_SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-# shellcheck disable=SC1091
 . "${_MAIN_SCRIPT_DIR}/scripts/common.sh"
 
 run_script() {

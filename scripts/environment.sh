@@ -3,7 +3,6 @@
 set -euo pipefail
 
 _SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-# shellcheck disable=SC1091
 . "${_SCRIPT_DIR}/common.sh"
 
 ENV_CONFIG_FILE="${DOTFILES_DIR}/config/environment.conf"

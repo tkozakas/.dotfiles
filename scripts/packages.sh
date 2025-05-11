@@ -3,15 +3,13 @@
 set -euo pipefail
 
 _SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-# shellcheck disable=SC1091
 . "${_SCRIPT_DIR}/common.sh"
 
 PACKAGE_CONFIG_FILE="${DOTFILES_DIR}/config/packages.conf"
 
 detect_distro() {
     if [[ -f /etc/os-release ]]; then
-        # shellcheck disable=SC1091
-        . /etc/os_release
+        . /etc/os-release
         if [[ -n "$ID" ]]; then
             if [[ "$ID" == "debian" ]]; then
                 echo "ubuntu"
@@ -30,10 +28,10 @@ main() {
     local system_packages_installed_successfully=true
 
     if [[ "$current_distro" == "unknown" ]]; then
-        log_error "Unknown distribution. Cannot install system packages." # Keep critical error
+        log_error "Unknown distribution. Cannot install system packages."
         system_packages_installed_successfully=false
     elif [[ ! -f "$PACKAGE_CONFIG_FILE" ]]; then
-        log_error "Package config file not found: $PACKAGE_CONFIG_FILE." # Keep critical error
+        log_error "Package config file not found: $PACKAGE_CONFIG_FILE."
         system_packages_installed_successfully=false
     else
         local packages_to_install_list=()
@@ -103,13 +101,13 @@ main() {
     fi
 
     if ! bash "${_SCRIPT_DIR}/tools.sh"; then
-        system_packages_installed_successfully=false # Mark overall failure
+        system_packages_installed_successfully=false
     fi
 
     if [[ "$system_packages_installed_successfully" = true ]]; then
         return 0
     else
-        return 1 # Indicates failure to main.sh
+        return 1
     fi
 }
 

@@ -5,7 +5,6 @@ set -euo pipefail
 # Sdkman
 if ! command -v sdk &> /dev/null; then
     curl -s "https://get.sdkman.io" | bash
-    # shellcheck disable=SC1090
     source "$HOME/.sdkman/bin/sdkman-init.sh"
 fi
 
@@ -17,7 +16,6 @@ fi
 # Docker
 if ! command -v docker &> /dev/null; then
     if [[ -f /etc/os-release ]]; then
-        # shellcheck disable=SC1091
         . /etc/os-release
         case "$ID" in
             arch)
@@ -36,7 +34,6 @@ fi
 # Docker Compose
 if ! (docker compose version &> /dev/null) && ! (command -v docker-compose &> /dev/null); then
     if [[ -f /etc/os-release ]]; then
-        # shellcheck disable=SC1091
         . /etc/os-release
         case "$ID" in
             arch)
