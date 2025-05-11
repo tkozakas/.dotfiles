@@ -33,6 +33,7 @@ main() {
         "backup.sh"
         "symlinks.sh"
         "environment.sh"
+        "tools.sh"
         "packages.sh"
     )
 

@@ -10,6 +10,7 @@ fi
 # Sdkman
 if ! command -v sdk &> /dev/null; then
     curl -s https://get.sdkman.io | bash
+    source "$HOME/.sdkman/bin/sdkman-init.sh"
 fi
 
 # Uv
