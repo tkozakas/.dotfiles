@@ -9,9 +9,9 @@ source "${ZPLUG_HOME:-$HOME/.zplug}/init.zsh"
 
 zplug "romkatv/powerlevel10k", as:theme, depth:1
 
-zplug "plugins/git", from:ohmyzsh
-zplug "plugins/dirhistory", from:ohmyzsh
-zplug "plugins/z", from:ohmyzsh
+zplug "ohmyzsh/ohmyzsh", use:"plugins/git"
+zplug "ohmyzsh/ohmyzsh", use:"plugins/dirhistory"
+zplug "ohmyzsh/ohmyzsh", use:"plugins/z"
 
 zplug "zsh-users/zsh-syntax-highlighting", defer:2
 zplug "zsh-users/zsh-autosuggestions", defer:2
