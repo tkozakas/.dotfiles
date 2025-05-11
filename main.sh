@@ -31,10 +31,10 @@ main() {
 
     local scripts_to_run=(
         "backup.sh"
-        "symlinks.sh"
-        "environment.sh"
-        "tools.sh"
         "packages.sh"
+        "tools.sh"
+        "environment.sh"
+        "symlinks.sh"
     )
 
     if [[ ${#scripts_to_run[@]} -eq 0 ]]; then
