@@ -33,7 +33,7 @@ main() {
     local scripts_to_run=(
         "backup.sh"
         "symlinks.sh"
-        "env.sh"
+        "environment.sh"
     )
 
     if [[ ${#scripts_to_run[@]} -eq 0 ]]; then
