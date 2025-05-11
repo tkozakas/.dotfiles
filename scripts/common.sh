@@ -9,7 +9,7 @@ _log_base() {
     local message="$2"
     local timestamp
     timestamp=$(date '+%Y-%m-%d %H:%M:%S')
-    echo "[$timestamp][$type] $message" | tee -a "$LOG_FILE"
+    echo "[$timestamp][$type] $message"
 }
 
 log_info() {
