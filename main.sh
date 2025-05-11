@@ -29,7 +29,7 @@ main() {
 
     local overall_success=true
 
-    local scripts_to_run=(
+local scripts_to_run=(
         "backup.sh"
         "packages.sh"
         "tools.sh"
