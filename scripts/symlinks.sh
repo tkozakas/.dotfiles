@@ -3,12 +3,12 @@
 set -euo pipefail
 
 _SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-DOTFILES_DIR="$(cd "${_SCRIPT_DIR}/.." && pwd)"
+. "${_SCRIPT_DIR}/common.sh"
 
 SYMLINK_CONFIG_FILE="${DOTFILES_DIR}/config/symlinks.conf"
 
 if [[ ! -f "$SYMLINK_CONFIG_FILE" ]]; then
-    echo "ERROR: Symlink config file not found: $SYMLINK_CONFIG_FILE." >&2
+    log_error "Symlink config file not found: $SYMLINK_CONFIG_FILE."
     exit 1
 fi
 
@@ -32,6 +32,6 @@ while IFS=':' read -r source_suffix target_suffix || [[ -n "$line" ]]; do
     mkdir -p "$(dirname "$target_path")"
     ln -s "$source_path" "$target_path"
 
-done < <(grep -vE '^\s*$' "$SYMLINK_CONFIG_FILE" | grep -vE '^\s*#')
+done < <(grep -vE '^\s*(#|$)' "$SYMLINK_CONFIG_FILE")
 
 exit 0

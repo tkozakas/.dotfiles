@@ -27,12 +27,15 @@ main() {
             exit 1
         fi
 
+        echo "[main.sh] Running: ${script_name}"
+
         if ! (bash "$script_path"); then
             log_error "Script ${script_name} failed. Aborting."
             exit 1
         fi
     done
 
+    echo "[main.sh] Dotfiles setup finished successfully."
     exit 0
 }
 

@@ -3,6 +3,8 @@
 set -euo pipefail
 
 _COMMON_SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+# shellcheck disable=SC2034
+DOTFILES_DIR="$(cd "${_COMMON_SCRIPT_DIR}/.." && pwd)"
 
 _log_base() {
     local type="$1"

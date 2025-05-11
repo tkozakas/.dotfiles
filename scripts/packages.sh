@@ -74,14 +74,12 @@ main() {
 
         read -r -a unique_packages_array <<< "$(echo "${packages_to_install_list[@]}" | tr ' ' '\n' | sort -u | tr '\n' ' ')"
 
-
         if [[ ${#unique_packages_array[@]} -gt 0 ]]; then
-            echo
-            echo "[packages.sh] Attempting to install for $current_distro: ${unique_packages_array[*]}"
+            echo "[packages.sh] Installing for $current_distro: ${unique_packages_array[*]}"
 
             if [[ "$current_distro" == "ubuntu" ]]; then
                 if ! sudo apt update; then
-                    log_error "apt update failed."
+                    log_error "apt update failed for $current_distro."
                     overall_system_package_success=false
                 fi
             fi
@@ -108,19 +106,16 @@ main() {
                         fi
                         ;;
                     *)
-                        log_warn "[packages.sh] System package installation not implemented for $current_distro for package: $pkg"
+                        log_error "[packages.sh] No install logic for $current_distro for package: $pkg"
                         individual_install_success=false
                         ;;
                 esac
 
                 if ! $individual_install_success; then
-                    log_error "[packages.sh] Failed to install package: $pkg"
+                    log_error "[packages.sh] Failed to install package: $pkg for $current_distro."
                     overall_system_package_success=false
                 fi
             done
-            echo
-        else
-             true
         fi
     fi
 

@@ -10,16 +10,15 @@ BACKUP_DEST_BASE="${HOME}/.dotfiles_backup"
 
 main() {
     if [[ ! -f "$BACKUP_CONFIG_FILE" ]]; then
-        log_error "Backup config file not found: $BACKUP_CONFIG_FILE. Skipping."
+        log_error "Backup config file not found: $BACKUP_CONFIG_FILE."
         return 1
     fi
 
     local current_backup_dir="${BACKUP_DEST_BASE}_$(date +%Y%m%d%H%M%S)"
     mkdir -p "$current_backup_dir"
-    log_info "Backing up to: $current_backup_dir"
 
     while IFS= read -r item_path || [[ -n "$item_path" ]]; do
-        if [[ -z "$item_path" ]]; then
+        if [[ -z "$item_path" || "$item_path" =~ ^\s*# ]]; then
             continue
         fi
 
