@@ -6,9 +6,6 @@ set -euo pipefail
 echo "Installing Sdkman..."
 if ! command -v sdk &> /dev/null; then
     curl -s https://get.sdkman.io | bash
-    if [[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]]; then
-        source "$HOME/.sdkman/bin/sdkman-init.sh"
-    fi
 fi
 
 # Uv
