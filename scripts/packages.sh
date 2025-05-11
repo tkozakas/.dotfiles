@@ -25,14 +25,14 @@ detect_distro() {
 main() {
     local current_distro
     current_distro=$(detect_distro)
-    local system_packages_installed_successfully=true
+    local overall_system_package_success=true
 
     if [[ "$current_distro" == "unknown" ]]; then
         log_error "Unknown distribution. Cannot install system packages."
-        system_packages_installed_successfully=false
+        overall_system_package_success=false
     elif [[ ! -f "$PACKAGE_CONFIG_FILE" ]]; then
         log_error "Package config file not found: $PACKAGE_CONFIG_FILE."
-        system_packages_installed_successfully=false
+        overall_system_package_success=false
     else
         local packages_to_install_list=()
         local current_section_tag=""
@@ -72,41 +72,64 @@ main() {
             fi
         done < "$PACKAGE_CONFIG_FILE"
 
-        local unique_packages
-        unique_packages=$(echo "${packages_to_install_list[@]}" | tr ' ' '\n' | sort -u | tr '\n' ' ')
+        read -r -a unique_packages_array <<< "$(echo "${packages_to_install_list[@]}" | tr ' ' '\n' | sort -u | tr '\n' ' ')"
 
-        if [[ -n "$unique_packages" ]]; then
-            case "$current_distro" in
-                "arch")
-                    if ! sudo pacman -Syu --noconfirm --needed $unique_packages; then
-                        system_packages_installed_successfully=false
-                    fi
-                    ;;
-                "fedora")
-                    if ! sudo dnf install -y $unique_packages; then
-                        system_packages_installed_successfully=false
-                    fi
-                    ;;
-                "ubuntu")
-                    sudo apt update &> /dev/null
-                    if ! sudo apt install -y $unique_packages; then
-                        system_packages_installed_successfully=false
-                    fi
-                    ;;
-                *)
-                    system_packages_installed_successfully=false
-                    ;;
-            esac
+
+        if [[ ${#unique_packages_array[@]} -gt 0 ]]; then
+            echo
+            echo "[packages.sh] Attempting to install for $current_distro: ${unique_packages_array[*]}"
+
+            if [[ "$current_distro" == "ubuntu" ]]; then
+                if ! sudo apt update; then
+                    log_error "apt update failed."
+                    overall_system_package_success=false
+                fi
+            fi
+
+            for pkg in "${unique_packages_array[@]}"; do
+                if [[ -z "$pkg" ]]; then
+                    continue
+                fi
+                local individual_install_success=true
+                case "$current_distro" in
+                    "arch")
+                        if ! sudo pacman -S --noconfirm --needed "$pkg"; then
+                            individual_install_success=false
+                        fi
+                        ;;
+                    "fedora")
+                        if ! sudo dnf install -y "$pkg"; then
+                            individual_install_success=false
+                        fi
+                        ;;
+                    "ubuntu")
+                        if ! sudo apt install -y "$pkg"; then
+                            individual_install_success=false
+                        fi
+                        ;;
+                    *)
+                        log_warn "[packages.sh] System package installation not implemented for $current_distro for package: $pkg"
+                        individual_install_success=false
+                        ;;
+                esac
+
+                if [[ "$individual_install_success" = true ]]; then
+                else
+                    log_warn "[packages.sh] Failed to install or process: $pkg. Skipping this package."
+                    overall_system_package_success=false
+                fi
+            done
+            echo
         else
              true
         fi
     fi
 
     if ! bash "${_SCRIPT_DIR}/tools.sh"; then
-        system_packages_installed_successfully=false
+        overall_system_package_success=false
     fi
 
-    if [[ "$system_packages_installed_successfully" = true ]]; then
+    if [[ "$overall_system_package_success" = true ]]; then
         return 0
     else
         return 1
