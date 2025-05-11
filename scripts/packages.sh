@@ -76,6 +76,7 @@ main() {
         unique_packages=$(echo "${packages_to_install_list[@]}" | tr ' ' '\n' | sort -u | tr '\n' ' ')
 
         if [[ -n "$unique_packages" ]]; then
+            echo "[packages.sh] Attempting to install for $current_distro: $unique_packages"
             case "$current_distro" in
                 "arch")
                     if ! sudo pacman -Syu --noconfirm --needed $unique_packages &> /dev/null; then
@@ -97,6 +98,8 @@ main() {
                     system_packages_installed_successfully=false
                     ;;
             esac
+        else
+             true
         fi
     fi
 
