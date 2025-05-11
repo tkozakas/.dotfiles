@@ -113,9 +113,8 @@ main() {
                         ;;
                 esac
 
-                if [[ "$individual_install_success" = true ]]; then
-                else
-                    log_warn "[packages.sh] Failed to install or process: $pkg. Skipping this package."
+                if ! $individual_install_success; then
+                    log_error "[packages.sh] Failed to install package: $pkg"
                     overall_system_package_success=false
                 fi
             done
