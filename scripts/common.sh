@@ -3,9 +3,6 @@
 set -euo pipefail
 
 _COMMON_SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-DOTFILES_DIR="$(cd "${_COMMON_SCRIPT_DIR}/.." && pwd)"
-
-LOG_FILE="${DOTFILES_DIR}/setup.log"
 
 _log_base() {
     local type="$1"
@@ -26,6 +23,3 @@ log_warn() {
 log_error() {
     _log_base "ERROR" "$1" >&2
 }
-
-touch "$LOG_FILE"
-chmod 600 "$LOG_FILE"
