@@ -76,21 +76,20 @@ main() {
         unique_packages=$(echo "${packages_to_install_list[@]}" | tr ' ' '\n' | sort -u | tr '\n' ' ')
 
         if [[ -n "$unique_packages" ]]; then
-            echo "[packages.sh] Attempting to install for $current_distro: $unique_packages"
             case "$current_distro" in
                 "arch")
-                    if ! sudo pacman -Syu --noconfirm --needed $unique_packages &> /dev/null; then
+                    if ! sudo pacman -Syu --noconfirm --needed $unique_packages; then
                         system_packages_installed_successfully=false
                     fi
                     ;;
                 "fedora")
-                    if ! sudo dnf install -y $unique_packages &> /dev/null; then
+                    if ! sudo dnf install -y $unique_packages; then
                         system_packages_installed_successfully=false
                     fi
                     ;;
                 "ubuntu")
                     sudo apt update &> /dev/null
-                    if ! sudo apt install -y $unique_packages &> /dev/null; then
+                    if ! sudo apt install -y $unique_packages; then
                         system_packages_installed_successfully=false
                     fi
                     ;;
