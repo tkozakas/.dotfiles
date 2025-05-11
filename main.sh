@@ -34,6 +34,7 @@ main() {
         "backup.sh"
         "symlinks.sh"
         "environment.sh"
+        "packages.sh"
     )
 
     if [[ ${#scripts_to_run[@]} -eq 0 ]]; then

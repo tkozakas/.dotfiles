@@ -40,7 +40,9 @@ main() {
 
     local sourcing_line="[[ -f \"${GENERATED_ENV_FILE_HOME}\" ]] && source \"${GENERATED_ENV_FILE_HOME}\""
 
-    ensure_sourcing_line "$ZSHENV_DOTFILE_PATH" "$sourcing_line"
+    if ! ensure_sourcing_line "$ZSHENV_DOTFILE_PATH" "$sourcing_line"; then
+        return 1
+    fi
 
     return 0
 }
