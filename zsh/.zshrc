@@ -56,6 +56,10 @@ if [[ -f ~/.zshaliases ]]; then
     source ~/.zshaliases
 fi
 
+if [[ -f ~/.zshenv ]]; then
+    source ~/.zshenv
+fi
+
 export FZF_DEFAULT_OPTS='--height 30% --layout=reverse --border=none'
 export HSA_OVERRIDE_GFX_VERSION=10.3.0
 
