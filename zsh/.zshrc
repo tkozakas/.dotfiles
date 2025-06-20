@@ -21,7 +21,7 @@ source "${ZPLUG_HOME:-$HOME/.zplug}/init.zsh"
 zplug "romkatv/powerlevel10k", as:theme, depth:1
 
 zplug "ohmyzsh/ohmyzsh", use:"plugins/git"
-zplug "ohmyzsh/ohmyzsh", use:"plu:gins/z"
+zplug "ohmyzsh/ohmyzsh", use:"plugins/z"
 
 zplug "zsh-users/zsh-syntax-highlighting", defer:2
 zplug "zsh-users/zsh-autosuggestions", defer:2
