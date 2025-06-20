@@ -1,8 +1,7 @@
 set -euo pipefail
 chsh -s $(which zsh)
 
-git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
-~/.fzf/install --key-bindings --completion
+[ -d "${HOME}/.fzf/.git" ] || (echo "Installing fzf…" && git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf && ~/.fzf/install --all)
 
 # Sdkman
 echo "Installing Sdkman..."

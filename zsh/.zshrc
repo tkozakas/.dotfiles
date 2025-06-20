@@ -36,3 +36,5 @@ zplug load
 
 autoload -Uz compinit
 compinit -i
+
+. "$HOME/.local/bin/env"
