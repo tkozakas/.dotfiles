@@ -1,7 +1,8 @@
-WALLPAPER_DIR="$HOME/.config/hypr/wallpapers"
-CURRENT_WALL=$(hyprctl hyprpaper listloaded)
-FOCUSED_MONITOR=$(hyprctl monitors -j | jq -r '.[] | select(.focused) | .name')
-WALLPAPER=$(find "$WALLPAPER_DIR" -type f ! -name "$(basename "$CURRENT_WALL")" | shuf -n 1)
+DIR="$HOME/.config/hypr/wallpapers"
+F=$(find "$DIR" -type f | shuf -n1)
 
-hyprctl hyprpaper reload "$FOCUSED_MONITOR","$WALLPAPER"
-notify-send "Wallpaper → $(basename "$WALLPAPER")"
+for M in $(hyprctl monitors -j | jq -r '.[].name'); do
+  hyprctl hyprpaper preload "$F"
+  hyprctl hyprpaper wallpaper "$M,$F"
+  hyprctl hyprpaper unload unused
+done
