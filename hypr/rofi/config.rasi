@@ -1,14 +1,11 @@
 /*
  * ROFI color theme
  *
- * Based on Something Found in the Internet
- *
- * User: Contributors
- * Copyright: *!
+ * Centered, box-style, with green accent
  */
 
 configuration {
-  font: "Iosevka Nerd Font Medium 17";
+  font: "Iosevka Nerd Font Medium 15";
 
   drun {
     display-name: "";
@@ -20,9 +17,12 @@ configuration {
 
   window {
     display-name: "";
-    location: center;
-    anchor: center;
+    monitor: "-1";
+    location: "center";
+    anchor: "center";
+    width: "25%";
   }
+
 
   timeout {
     delay: 10;
@@ -36,25 +36,24 @@ configuration {
   padding: 0;
   spacing: 0;
 
-  bg: #181825;
-	fg: #ABB2BF;
-	blue: #61AFEF;
-	blue-alt: #61AFEF15;
-	red: #E06C75;
-  red-alt: #E06C7515;
+  bg:         #181825;
+  fg:         #ABB2BF;
+  blue:       #61AFEF;
+  blue-alt:   #61AFEF15;
+  accent:     #98C379;
+  accent-alt: #98C37915;
 
   background-color: @bg;
-  text-color: @fg;
+  text-color:       @fg;
 }
 
 window {
   border: 2px;
   border-color: @blue-alt;
-  border-radius: 6px;
-  padding: 6px;
-  transparency: "real";
+  border-radius: 2px;
+  padding:       6px;
+  transparency:  "real";
 }
-
 
 mainbox {
   children: [inputbar, listview];
@@ -63,19 +62,19 @@ mainbox {
 inputbar {
   border: 0 0 0 2px;
   border-color: @blue;
-  border-radius: 6px;
+  border-radius: 2px;
   children: [entry];
   margin: 0 0 6px 0;
 }
 
 entry {
   background-color: @blue-alt;
-  padding: 10px;
+  padding: 8px;
   text-color: @blue;
 }
 
 listview {
-  lines: 10;
+  lines: 6;
 }
 
 element {
@@ -84,15 +83,15 @@ element {
 }
 
 element selected {
-  border-color: @red;
-  border-radius: 6px;
+  border-color: @accent;
+  border-radius: 2px;
 }
 
 element-text {
-  padding: 10px;
+  padding: 8px;
 }
 
 element-text selected {
-  background-color: @red-alt;
-  text-color: @red;
+  background-color: @accent-alt;
+  text-color: @accent;
 }
