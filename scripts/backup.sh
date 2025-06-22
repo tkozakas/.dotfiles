@@ -1,36 +1,32 @@
+#!/usr/bin/env bash
 set -euo pipefail
 
 _SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 . "${_SCRIPT_DIR}/common.sh"
 
-BACKUP_CONFIG_FILE="${DOTFILES_DIR}/config/backup.conf"
+SYMLINKS_CONF="${DOTFILES_DIR}/config/symlinks.conf"
 BACKUP_DEST_BASE="${HOME}/.dotfiles_backup"
 
 main() {
-  if [[ ! -f "$BACKUP_CONFIG_FILE" ]]; then
-    log_error "Backup config file not found: $BACKUP_CONFIG_FILE."
+  [[ -f "$SYMLINKS_CONF" ]] || {
+    log_error "Symlinks config not found: $SYMLINKS_CONF"
     return 1
-  fi
-
-  local current_backup_dir="${BACKUP_DEST_BASE}_$(date +%Y%m%d%H%M%S)"
+  }
+  current_backup_dir="${BACKUP_DEST_BASE}_$(date +%Y%m%d%H%M%S)"
   mkdir -p "$current_backup_dir"
+  echo "Backing up to $current_backup_dir"
 
-  while IFS= read -r item_path || [[ -n "$item_path" ]]; do
-    if [[ -z "$item_path" || "$item_path" =~ ^\s*# ]]; then
-      continue
+  while IFS=: read -r repo_subdir home_path || [[ -n "$repo_subdir" ]]; do
+    [[ -z "${repo_subdir// /}" ]] && continue
+    [[ "$repo_subdir" =~ ^\s*# ]] && continue
+    src="$HOME/$home_path"
+    if [[ -L "$src" ]]; then
+      dest="$current_backup_dir/$home_path"
+      mkdir -p "$(dirname "$dest")"
+      mv "$src" "$dest"
     fi
+  done <"$SYMLINKS_CONF"
 
-    local source_item="${HOME}/${item_path}"
-    local dest_item_path="${current_backup_dir}/${item_path}"
-
-    if [[ -e "$source_item" ]]; then
-      if [[ -L "$source_item" ]]; then
-        continue
-      fi
-      mkdir -p "$(dirname "$dest_item_path")"
-      mv "$source_item" "$dest_item_path"
-    fi
-  done <"$BACKUP_CONFIG_FILE"
   return 0
 }
 
