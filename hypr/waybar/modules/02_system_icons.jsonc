@@ -1,0 +1,26 @@
+{
+  "group/system": {
+    "orientation": "horizontal",
+    "modules": [
+      "network",
+      "bluetooth",
+      "hyprland/language"
+    ]
+  },
+  "network": {
+    "format-wifi": "",
+    "format-ethernet": "󰈀",
+    "format-disconnected": "󰌙",
+    "tooltip": true
+  },
+  "bluetooth": {
+    "format": "",
+    "format-disabled": "",
+    "format-connected": "",
+    "tooltip": true
+  },
+  "hyprland/language": {
+    "format": "󰌓 {short}",
+    "keyboard-name": "at-translated-set-2-keyboard",
+  }
+}

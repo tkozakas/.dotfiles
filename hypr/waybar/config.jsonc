@@ -1,0 +1,20 @@
+{
+  "include": [
+    "$HOME/.config/waybar/modules/*.jsonc"
+  ],
+  "layer": "top",
+  "position": "top",
+  "height": 38,
+  "spacing": 8,
+  "margin-left": 10,
+  "margin-right": 10,
+  "modules-left": [
+    "clock",
+    "group/system",
+    "hyprland/workspaces"
+  ],
+  "modules-right": [
+    "pulseaudio",
+    "custom/power"
+  ]
+}
