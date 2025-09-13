@@ -11,7 +11,7 @@ post_hook = 'pkill -SIGUSR2 waybar'
 [templates.kitty]
 input_path = '~/.config/hypr/matugen/templates/kitty-colors.conf'
 output_path = '~/.config/kitty/colors.conf'
-post_hook = "kill -SIGUSR1 $(pidof kitty)"
+post_hook = "pkill -SIGUSR1 kitty"
 
 [templates.hyprland]
 input_path = '~/.config/hypr/matugen/templates/hyprland-colors.conf'

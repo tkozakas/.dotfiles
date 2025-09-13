@@ -1,62 +1,56 @@
 @import "colors.css";
 
 * {
-    border: none;
-    border-radius: 0;
-    font-family: "JetBrainsMono Nerd Font", "Symbols Nerd Font";
-    font-size: 16px;
-    font-weight: bold;
-    min-height: 0;
-    transition: all 0.3s ease;
+  background-color: @background;
+  color: @foreground;
+  border: none;
+  border-radius: 0;
+  min-height: 0;
+  font-family: CaskaydiaMono Nerd Font;
+  font-size: 12px;
 }
 
-window#waybar {
-    background: transparent;
-    padding: 0 10px;
+.modules-left {
+  margin-left: 8px;
 }
 
-#clock,
-#group-system,
-#workspaces,
-#pulseaudio,
-#custom-power {
-    background: @background;
-    color: @text;
-    padding: 5px 10px;
-    margin: 8px 0px;
-    border-radius: 15px;
-    border: 1px solid @surface;
+.modules-right {
+  margin-right: 8px;
 }
 
-#clock:hover,
-#group-system:hover,
-#workspaces:hover,
-#pulseaudio:hover,
-#custom-power:hover {
-    background: @surface;
-    border: 1px solid @accent;
+#workspaces button {
+  all: initial;
+  padding: 0 6px;
+  margin: 0 1.5px;
+  min-width: 9px;
 }
 
-#workspaces button,
+#workspaces button.empty {
+  opacity: 0.5;
+}
+
+#tray,
+#cpu,
+#battery,
 #network,
 #bluetooth,
-#language {
-    padding: 0 10px;
-    color: @subtext;
-    background-color: transparent;
+#pulseaudio {
+  min-width: 12px;
+  margin: 0 7.5px;
 }
 
-#workspaces button:hover,
-#network:hover,
-#bluetooth:hover,
-#language:hover {
-    color: @text;
-    background-color: @surface;
-    border-radius: 12px;
+#custom-expand-icon {
+  margin-right: 7px;
 }
 
-#workspaces button.active {
-    background: @accent;
-    color: @accent-dark;
-    border-radius: 12px;
+tooltip {
+  padding: 2px;
+}
+
+#clock {
+  margin-left: 8.75px;
+}
+
+.hidden {
+  opacity: 0;
 }
