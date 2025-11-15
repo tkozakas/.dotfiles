@@ -1,24 +1,24 @@
 #!/bin/bash
 
-# === CONFIG ===
-WALLPAPER_DIR="$HOME/.config/hypr/wallpapers/"
+# No trailing slash here
+WALLPAPER_DIR="$HOME/.config/hypr/wallpapers"
 SYMLINK_PATH="$HOME/.config/hypr/current_wallpaper"
 
 cd "$WALLPAPER_DIR" || exit 1
 
-# === handle spaces name
-IFS=$'\n'
+SELECTED_WALL=$(find . -maxdepth 1 -type f \( -iname "*.jpg" -o -iname "*.png" -o -iname "*.gif" -o -iname "*.jpeg" \) -printf "%f\n" | sort | \
+                rofi -config "$HOME/.config/hypr/rofi/wallpaper.rasi" -dmenu -p "Select Wallpaper")
 
-# === ICON-PREVIEW SELECTION WITH ROFI, SORTED BY NEWEST ===
-SELECTED_WALL=$(for a in $(ls -t *.jpg *.png *.gif *.jpeg 2>/dev/null); do echo -en "$a\0icon\x1f$a\n"; done | rofi -config "$HOME/.config/hypr/rofi/config.rasi" -dmenu -p "")
 [ -z "$SELECTED_WALL" ] && exit 1
+
 SELECTED_PATH="$WALLPAPER_DIR/$SELECTED_WALL"
 
-# === SET WALLPAPER ===
-matugen image "$SELECTED_PATH"
+[ ! -f "$SELECTED_PATH" ] && exit 1
 
-# === CREATE SYMLINK ===
 mkdir -p "$(dirname "$SYMLINK_PATH")"
 ln -sf "$SELECTED_PATH" "$SYMLINK_PATH"
 
-matugen --config ~/.config/hypr/matugen/config.toml image $SYMLINK_PATH
+matugen --config ~/.config/hypr/matugen/config.toml image "$SYMLINK_PATH"
+swww img "$SYMLINK_PATH" --transition-type none 
+
+echo "Wallpaper changed."

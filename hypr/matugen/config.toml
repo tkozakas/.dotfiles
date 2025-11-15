@@ -22,3 +22,14 @@ post_hook = 'hyprctl reload'
 input_path = '~/.config/hypr/matugen/templates/rofi-colors.rasi'
 output_path = '~/.config/hypr/rofi/colors.rasi'
 
+[templates.gtk3]
+input_path = '~/.config/hypr/matugen/templates/gtk-colors.css'
+output_path = '~/.config/gtk-3.0/gtk.css'
+
+[templates.gtk4]
+input_path = '~/.config/hypr/matugen/templates/gtk-colors.css'
+output_path = '~/.config/gtk-4.0/gtk.css'
+
+[templates.vencord]
+input_path = '~/.config/hypr/matugen/templates/midnight-discord.css'
+output_path = '~/.config/Vencord/themes/matugen.css'

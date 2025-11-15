@@ -1,0 +1,26 @@
+return {
+	"nvim-treesitter/nvim-treesitter",
+	dependencies = { "RRethy/nvim-treesitter-endwise" },
+	build = ":TSUpdate",
+	main = "nvim-treesitter.configs",
+	opts = {
+		ensure_installed = {
+			"bash",
+			"diff",
+			"html",
+			"lua",
+			"luadoc",
+			"query",
+			"vim",
+			"vimdoc",
+			"json",
+			"go",
+			"ruby",
+			"nix",
+		},
+		auto_install = true,
+		highlight = { enable = true },
+		indent = { enable = true, disable = { "ruby" } },
+		endwise = { enable = true },
+	},
+}

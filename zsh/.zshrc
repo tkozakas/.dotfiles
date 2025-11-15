@@ -1,10 +1,6 @@
-if [[ -f ~/.zshalias ]]; then
-    source ~/.zshalias
-fi
-if [[ -f ~/.zshenv ]]; then
-    source ~/.zshenv
-fi
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+[[ -f ~/.zshalias ]] && source ~/.zshalias
+[[ -f ~/.zshenv ]] && source ~/.zshenv
+[[ -f ~/.fzf.zsh ]] && source ~/.fzf.zsh
 
 if [[ ! -d "${ZPLUG_HOME:-$HOME/.zplug}" ]]; then
     git clone https://github.com/zplug/zplug "${ZPLUG_HOME:-$HOME/.zplug}"
@@ -17,6 +13,7 @@ zplug "subnixr/minimal", as:theme, depth:1
 zplug "ohmyzsh/ohmyzsh", use:"plugins/git"
 zplug "ohmyzsh/ohmyzsh", use:"plugins/z"
 
+zplug "loiccoyle/zsh-github-copilot"
 zplug "zsh-users/zsh-syntax-highlighting", defer:2
 zplug "zsh-users/zsh-autosuggestions", defer:2
 zplug "zsh-users/zsh-completions", defer:2 

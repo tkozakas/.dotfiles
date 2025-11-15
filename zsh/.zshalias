@@ -5,3 +5,5 @@ alias gst='git status'
 alias gl='git log --oneline --graph --decorate --all'
 alias vim='nvim'
 alias nano='nvim'
+alias nil='kitty +kitten ssh tom@192.168.0.55'
+bindkey '^[\' zsh_gh_copilot_suggest
