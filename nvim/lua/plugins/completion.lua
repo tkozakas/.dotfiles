@@ -52,7 +52,7 @@ return {
 				provider = {
 					enabled = "tmux", -- Default when running inside a `tmux` session.
 					tmux = {
-						options = "-h", -- options to pass to `tmux split-window`
+						options = "-h -p 30", -- options to pass to `tmux split-window`
 					},
 				},
 			}
