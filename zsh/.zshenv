@@ -1,4 +1,4 @@
-export MNML_USER_CHAR=$(emojis=('🫠' '🫣' '🥴' '🤡' '🥺' '🤓' '🤠' '👽' '👻' '💩' '🦞' '🦥' '🦖' '🗿' '🪑'); print -r -- "${emojis[$(( (RANDOM % ${#emojis[@]}) + 1 ))]}")
+export MNML_USER_CHAR=''
 export EDITOR='nvim'
 export VISUAL="$EDITOR"
 
