@@ -29,3 +29,6 @@ autoload -Uz compinit
 compinit -i
 
 . "$HOME/.local/bin/env"
+
+# opencode
+export PATH=/home/tom/.opencode/bin:$PATH

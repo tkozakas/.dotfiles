@@ -1,0 +1,12 @@
+{
+  "$schema": "https://opencode.ai/config.json",
+  "theme": "gruvbox",
+  "model": "anthropic/claude-sonnet-4-5",
+  "autoupdate": true,
+  "command": {
+    "remove-comments": {
+      "template": "Remove only the comments that were added before the latest git changes. Compare the current code with the previous git commit to identify newly added comments and remove only those. Keep all existing comments that were in the previous version and preserve code functionality.",
+      "description": "Remove recently added comments before git changes"
+    }
+  },
+}

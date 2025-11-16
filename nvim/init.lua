@@ -28,3 +28,10 @@ require('core.autocmds')
 require('core.commands')
 require('core.functions')
 require('lazy').setup('plugins')
+
+-- Auto-reload config on SIGUSR1
+local signal = vim.loop.new_signal()
+signal:start(10, function()
+  vim.cmd('source $MYVIMRC')
+  vim.notify('Neovim config reloaded', vim.log.levels.INFO)
+end)

@@ -34,6 +34,9 @@ vim.keymap.set("n", "<leader>dc", ":cclose<CR>", { desc = "[D]iagnostics [C]lose
 vim.keymap.set("n", "<leader>dn", ":cnext<CR>", { desc = "[D]iagnostics [N]ext Item" })
 vim.keymap.set("n", "<leader>dp", ":cprevious<CR>", { desc = "[D]iagnostics [P]revious Item" })
 
+--CTRL-W s: Splits the current window horizontally, creating a new window below the current one.[1]
+--CTRL-W v: Splits the current window vertically, creating a new window to the right of the current one.[1]
+
 -- Create new tmux splits from Neovim
 vim.keymap.set("n", "<leader>th", function()
 	require("core.functions").tmux_split_horizontal()

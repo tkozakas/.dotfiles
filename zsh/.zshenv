@@ -1,5 +1,4 @@
 export MNML_USER_CHAR=''
-
 export HISTFILE=~/.zsh_history
 export HISTSIZE=10000
 export SAVEHIST=20000

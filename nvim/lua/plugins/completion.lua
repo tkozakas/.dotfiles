@@ -32,37 +32,53 @@ return {
 		end,
 	},
 	{
-		"zbirenbaum/copilot.lua",
-		event = "LspAttach",
+		"github/copilot.vim",
 		config = function()
-			require("copilot").setup({
-				panel = { enabled = false },
-				suggestion = { enabled = false },
+			vim.keymap.set("i", "<Tab>", 'copilot#Accept("\\<CR>")', {
+				expr = true,
+				replace_keycodes = false,
 			})
+
+			vim.g.copilot_no_tab_map = true
 		end,
 	},
 	{
-		"coder/claudecode.nvim",
-		dependencies = { "folke/snacks.nvim" },
-		config = true,
-		keys = {
-			{ "<leader>a", nil, desc = "AI/Claude Code" },
-			{ "<leader>ac", "<cmd>ClaudeCode<cr>", desc = "Toggle Claude" },
-			{ "<leader>af", "<cmd>ClaudeCodeFocus<cr>", desc = "Focus Claude" },
-			{ "<leader>ar", "<cmd>ClaudeCode --resume<cr>", desc = "Resume Claude" },
-			{ "<leader>aC", "<cmd>ClaudeCode --continue<cr>", desc = "Continue Claude" },
-			{ "<leader>am", "<cmd>ClaudeCodeSelectModel<cr>", desc = "Select Claude model" },
-			{ "<leader>ab", "<cmd>ClaudeCodeAdd %<cr>", desc = "Add current buffer" },
-			{ "<leader>as", "<cmd>ClaudeCodeSend<cr>", mode = "v", desc = "Send to Claude" },
-			{
-				"<leader>as",
-				"<cmd>ClaudeCodeTreeAdd<cr>",
-				desc = "Add file",
-				ft = { "NvimTree", "neo-tree", "oil", "minifiles" },
-			},
-			{ "<leader>aa", "<cmd>ClaudeCodeDiffAccept<cr>", desc = "Accept diff" },
-			{ "<leader>ad", "<cmd>ClaudeCodeDiffDeny<cr>", desc = "Deny diff" },
+		"NickvanDyke/opencode.nvim",
+		dependencies = {
+			{ "folke/snacks.nvim", opts = { input = {}, picker = {}, terminal = {} } },
 		},
-		opts = {},
+		config = function()
+			vim.g.opencode_opts = {
+				provider = {
+					enabled = "tmux", -- Default when running inside a `tmux` session.
+					tmux = {
+						options = "-h", -- options to pass to `tmux split-window`
+					},
+				},
+			}
+			vim.o.autoread = true
+
+			vim.keymap.set({ "n", "x" }, "<C-a>", function()
+				require("opencode").ask("@this: ", { submit = true })
+			end, { desc = "Ask opencode" })
+			vim.keymap.set({ "n", "x" }, "<C-x>", function()
+				require("opencode").select()
+			end, { desc = "Execute opencode action…" })
+			vim.keymap.set({ "n", "x" }, "ga", function()
+				require("opencode").prompt("@this")
+			end, { desc = "Add to opencode" })
+			vim.keymap.set({ "n", "t" }, "<C-o>", function()
+				require("opencode").toggle()
+			end, { desc = "Toggle opencode" })
+			vim.keymap.set("n", "<S-C-u>", function()
+				require("opencode").command("session.half.page.up")
+			end, { desc = "opencode half page up" })
+			vim.keymap.set("n", "<S-C-d>", function()
+				require("opencode").command("session.half.page.down")
+			end, { desc = "opencode half page down" })
+			-- You may want these if you stick with the opinionated "<C-a>" and "<C-x>" above — otherwise consider "<leader>o".
+			vim.keymap.set("n", "+", "<C-a>", { desc = "Increment", noremap = true })
+			vim.keymap.set("n", "-", "<C-x>", { desc = "Decrement", noremap = true })
+		end,
 	},
 }
