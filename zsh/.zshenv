@@ -1,6 +1,4 @@
 export MNML_USER_CHAR=''
-export EDITOR='nvim'
-export VISUAL="$EDITOR"
 
 export HISTFILE=~/.zsh_history
 export HISTSIZE=10000
