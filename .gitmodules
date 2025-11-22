@@ -1,12 +1,12 @@
 [submodule "nvim"]
 	path = nvim
-	url = git@github.com:tkozakas/nvim.git
+	url = https://github.com/tkozakas/nvim
 [submodule "tmux"]
 	path = tmux
-	url = git@github.com:tkozakas/tmux.git
+	url = https://github.com/tkozakas/tmux
 [submodule "kitty"]
 	path = kitty
-	url = git@github.com:tkozakas/kitty.git
+	url = https://github.com/tkozakas/kitty
 [submodule "opencode"]
 	path = opencode
-	url = git@github.com:tkozakas/opencode.git
+	url = https://github.com/tkozakas/opencode

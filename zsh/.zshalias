@@ -1,5 +1,6 @@
-alias ls='ls --color=auto'
-alias ll='ls -alhF --color=auto'
+alias ls='lsd'
+alias ll='lsd -lah'
+alias lt='lsd --tree'
 alias g='git'
 alias gst='git status'
 alias gl='git log --oneline --graph --decorate --all'
