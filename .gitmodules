@@ -1,12 +1,16 @@
 [submodule "nvim"]
 	path = nvim
 	url = git@github.com:tkozakas/nvim.git
+	branch = master
 [submodule "tmux"]
 	path = tmux
 	url = git@github.com:tkozakas/tmux.git
+	branch = master
 [submodule "kitty"]
 	path = kitty
 	url = git@github.com:tkozakas/kitty.git
+	branch = master
 [submodule "opencode"]
 	path = opencode
 	url = git@github.com:tkozakas/opencode.git
+	branch = master
